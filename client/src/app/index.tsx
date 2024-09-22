@@ -1,12 +1,16 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
+import { App } from './app';
+
 import './index.css';
 
 
 const root = createRoot(document.getElementById('root') as HTMLElement);
 root.render(
   <React.StrictMode>
-    <div>123</div>
+    <App/>
+    <h1>122324</h1>
   </React.StrictMode>
 );
+
 
