@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'RobotoCondensed';
+  font-display: swap;
+  src: url('../../public/fonts/roboto-condensed/RobotoCondensed-Medium.ttf') format('ttf');
+}
+
+
+* {
+  font-family: 'RobotoCondensed', sans-serif;
+}
+
+
+body {
+  margin: 0;
+  background-color: #f3f3f3;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
