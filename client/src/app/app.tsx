@@ -1,15 +1,11 @@
-// import { cn } from '@/shared/lib';
-import React from 'react';
+import { TodoList } from '@/features/todo/ui/todo-list';
+import { Container } from '@/shared/ui';
 
-interface Props {
-    className?: string;
-}
 
-export const App: React.FC<Props> = ({ className }) => {
+export const App = () => {
   return (
-    <div>
-
-        <h1>s ss s 2s  2s  2 </h1>
-    </div>
+    <Container>
+        <TodoList/>
+    </Container>
   );
 };

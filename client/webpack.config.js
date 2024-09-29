@@ -27,9 +27,13 @@ module.exports = {
       },
       {
         test: /\.css$/i,
-        use: ['style-loader', 'css-loader'],
+        use: ['style-loader', 'css-loader', 'postcss-loader'],
       },
       { test: /\.html$/, use: ['html-loader'] },
+      {
+        test: /\.(woff|woff2|eot|ttf|otf)$/i,
+        type: 'asset/resource',
+      },
     ],
   },
   plugins: [
@@ -40,6 +44,10 @@ module.exports = {
     new ProgressPlugin(),
     new ReactRefreshWebpackPlugin()],
   resolve: {
+    alias: {
+      "@": path.resolve(__dirname, "./src"),
+      "@shared": path.resolve(__dirname, "./src/shared"),
+    },
     extensions: ['.tsx', '.ts', '.js'],
   },
   devServer: {

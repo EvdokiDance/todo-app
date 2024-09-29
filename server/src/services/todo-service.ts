@@ -1,6 +1,6 @@
 import { Status, Todo } from "@prisma/client";
 import { prisma } from "../prisma/prisma-client";
-
+import type { TodoDTO } from "./todo-dto";
 
 
 
@@ -14,9 +14,17 @@ class TodoService {
         return todo;
     }
     
-    async getTodos(): Promise<Todo[]> {
+    async getTodos(): Promise<TodoDTO[]> {
         const todos = await prisma.todo.findMany();
-        return todos;
+        const todoDTOs : TodoDTO[] = todos.map((todo) => {
+            return {
+                id: todo.id,
+                description: todo.description,
+                status: todo.status === 'DONE' ? 'completed' : 'active',
+                dateCreated: todo.createdAt.toISOString()
+            }
+        });
+        return todoDTOs;
     }
 
 
@@ -29,6 +37,7 @@ class TodoService {
         return deletedTodo;
     }
     async updateTodo(id: string, description?: string, status?: Status): Promise<Todo> {
+        
     
         const updatedTodo = await prisma.todo.update({
             where: {
